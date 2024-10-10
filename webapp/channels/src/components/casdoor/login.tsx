@@ -48,18 +48,18 @@ import LoginOpenIDIcon from 'components/widgets/icons/login_openid_icon';
 import Input, {SIZE} from 'components/widgets/inputs/input/input';
 import PasswordInput from 'components/widgets/inputs/password_input/password_input';
 
+import type {GlobalState} from 'types/store';
+
+import LoginMfa from './login_mfa';
+
+import './login.scss';
+
 import Constants from 'utils/constants';
 import DesktopApp from 'utils/desktop_api';
 import {t} from 'utils/i18n';
 import {showNotification} from 'utils/notifications';
 import {isDesktopApp} from 'utils/user_agent';
 import {setCSRFFromCookie} from 'utils/utils';
-
-import type {GlobalState} from 'types/store';
-
-import LoginMfa from './login_mfa';
-
-import './login.scss';
 
 const MOBILE_SCREEN_WIDTH = 1200;
 
@@ -860,47 +860,47 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                             )}
                             {enableBaseLogin && (
                                 <>
-                                <form
-                                    onSubmit={(event: FormEvent<HTMLFormElement>) => {
-                                        preSubmit(event as unknown as React.MouseEvent);
-                                    }}
-                                >
-                                    <div className='login-body-card-form'>
-                                        <Input
-                                            ref={loginIdInput}
-                                            name='loginId'
-                                            containerClassName='login-body-card-form-input'
-                                            type='text'
-                                            inputSize={SIZE.LARGE}
-                                            value={loginId}
-                                            onChange={handleInputOnChange}
-                                            hasError={hasError}
-                                            placeholder={getInputPlaceholder()}
-                                            disabled={isWaiting}
-                                            autoFocus={true}
-                                        />
-                                        <PasswordInput
-                                            ref={passwordInput}
-                                            className='login-body-card-form-password-input'
-                                            value={password}
-                                            inputSize={SIZE.LARGE}
-                                            onChange={handlePasswordInputOnChange}
-                                            hasError={hasError}
-                                            disabled={isWaiting}
-                                        />
-                                        {getResetPasswordLink()}
-                                        <SaveButton
-                                            extraClasses='login-body-card-form-button-submit large'
-                                            saving={isWaiting}
-                                            onClick={preSubmit}
-                                            defaultMessage={formatMessage({id: 'login.logIn', defaultMessage: 'Log in'})}
-                                            savingMessage={formatMessage({id: 'login.logingIn', defaultMessage: 'Logging in…'})}
-                                        />
-                                    </div>
-                                </form>
-                                <button className='btn btn-primary  login-body-card-form-button-submit large' style={{marginTop: '50px', height: '48px'}} onClick={casdoorLogin}>Casdoor connexion</button>
-                            </>
-                        )}
+                                    <form
+                                        onSubmit={(event: FormEvent<HTMLFormElement>) => {
+                                            preSubmit(event as unknown as React.MouseEvent);
+                                        }}
+                                    >
+                                        <div className='login-body-card-form'>
+                                            <Input
+                                                ref={loginIdInput}
+                                                name='loginId'
+                                                containerClassName='login-body-card-form-input'
+                                                type='text'
+                                                inputSize={SIZE.LARGE}
+                                                value={loginId}
+                                                onChange={handleInputOnChange}
+                                                hasError={hasError}
+                                                placeholder={getInputPlaceholder()}
+                                                disabled={isWaiting}
+                                                autoFocus={true}
+                                            />
+                                            <PasswordInput
+                                                ref={passwordInput}
+                                                className='login-body-card-form-password-input'
+                                                value={password}
+                                                inputSize={SIZE.LARGE}
+                                                onChange={handlePasswordInputOnChange}
+                                                hasError={hasError}
+                                                disabled={isWaiting}
+                                            />
+                                            {getResetPasswordLink()}
+                                            <SaveButton
+                                                extraClasses='login-body-card-form-button-submit large'
+                                                saving={isWaiting}
+                                                onClick={preSubmit}
+                                                defaultMessage={formatMessage({id: 'login.logIn', defaultMessage: 'Log in'})}
+                                                savingMessage={formatMessage({id: 'login.logingIn', defaultMessage: 'Logging in…'})}
+                                            />
+                                        </div>
+                                    </form>
+                                    <button onClick={casdoorLogin}>Casdoor Login</button>
+                                </>
+                            )}
                             {enableBaseLogin && enableExternalSignup && (
                                 <div className='login-body-card-form-divider'>
                                     <span className='login-body-card-form-divider-label'>

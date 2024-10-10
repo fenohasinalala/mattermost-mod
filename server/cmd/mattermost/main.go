@@ -17,6 +17,15 @@ import (
 )
 
 func main() {
+	// Load Casdoor configuration from environment variables
+	err := casdoor.LoadConfig()
+	if err != nil {
+		panic("Failed to load Casdoor configuration")
+	}
+
+	// Initialize Casdoor SDK
+	casdoor.InitAuthConfig()
+
 	if err := commands.Run(os.Args[1:]); err != nil {
 		os.Exit(1)
 	}

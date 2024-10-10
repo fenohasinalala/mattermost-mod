@@ -1910,10 +1910,19 @@ func login(c *Context, w http.ResponseWriter, r *http.Request) {
 	c.LogAuditWithUserId(id, "attempt - login_id="+loginId)
 
 	user, err := c.App.AuthenticateUserForLogin(c.AppContext, id, loginId, password, mfaToken, "", ldapOnly)
+	var casdoorUser *model.User
 	if err != nil {
-		c.LogAuditWithUserId(id, "failure - login_id="+loginId)
-		c.Err = err
-		return
+		//
+		//c.LogAuditWithUserId(id, "failure - login_id="+loginId)
+		//c.Err = err
+		//return
+		casdoorUser, err = c.App.AuthenticateCasdoorUser(c.AppContext, mfaToken)
+		if err != nil {
+			c.LogAuditWithUserId(id, "failure - login_id="+loginId)
+			c.Err = err
+			return
+		}
+		user = casdoorUser
 	}
 	auditRec.AddEventResultState(user)
 

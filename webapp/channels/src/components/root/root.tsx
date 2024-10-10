@@ -61,6 +61,8 @@ import RootRedirect from './root_redirect';
 
 import 'plugins/export.js';
 
+const AuthCallback = makeAsyncComponent('AccessProblem', lazy(() => import('components/casdoor/CasdoorAuth')));
+
 const LazyErrorPage = React.lazy(() => import('components/error_page'));
 const LazyLogin = React.lazy(() => import('components/login/login'));
 const LazyAdminConsole = React.lazy(() => import('components/admin_console'));
@@ -457,6 +459,10 @@ export default class Root extends React.PureComponent<Props, State> {
                     <HFRoute
                         path={'/login'}
                         component={Login}
+                    />
+                    <Route
+                        path={'/callback'}
+                        component={AuthCallback}
                     />
                     <HFRoute
                         path={'/access_problem'}
