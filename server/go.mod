@@ -5,14 +5,13 @@ go 1.21.0
 toolchain go1.21.8
 
 require (
-	github.com/casdoor/casdoor-go-sdk v0.29.1
-
 	code.sajari.com/docconv/v2 v2.0.0-pre.4
 	github.com/Masterminds/semver/v3 v3.2.1
 	github.com/avct/uasurfer v0.0.0-20240501094946-ca0c4d1e541b
 	github.com/aws/aws-sdk-go v1.55.0
 	github.com/blang/semver/v4 v4.0.0
 	github.com/blevesearch/bleve/v2 v2.4.1
+	github.com/casdoor/casdoor-go-sdk v1.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/dgryski/dgoogauth v0.0.0-20190221195224-5a805980a5f3
 	github.com/disintegration/imaging v1.6.2
@@ -136,6 +135,7 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-resty/resty/v2 v2.13.1 // indirect
 	github.com/goccy/go-json v0.10.3 // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/geo v0.0.0-20230421003525-6adc56603217 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
@@ -227,6 +227,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/mod v0.19.0 // indirect
+	golang.org/x/oauth2 v0.21.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240722135656-d784300faade // indirect

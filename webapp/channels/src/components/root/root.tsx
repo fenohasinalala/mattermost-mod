@@ -2,11 +2,21 @@
 // See LICENSE.txt for license information.
 
 import classNames from 'classnames';
+import webSocketClient from 'client/web_websocket_client';
 import deepEqual from 'fast-deep-equal';
 import type {History} from 'history';
+import {initializePlugins} from 'plugins';
+import Pluggable from 'plugins/pluggable';
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import type {RouteComponentProps} from 'react-router-dom';
+import A11yController from 'utils/a11y_controller';
+import {PageLoadContext} from 'utils/constants';
+import {EmojiIndicesByAlias} from 'utils/emoji';
+import {TEAM_NAME_PATH_PATTERN} from 'utils/path';
+import {getSiteURL} from 'utils/url';
+import * as UserAgent from 'utils/user_agent';
+import * as Utils from 'utils/utils';
 
 import type {ClientConfig} from '@mattermost/types/config';
 import {ServiceEnvironment} from '@mattermost/types/config';
@@ -41,17 +51,6 @@ import SystemNotice from 'components/system_notice';
 import TeamSidebar from 'components/team_sidebar';
 import WindowSizeObserver from 'components/window_size_observer/WindowSizeObserver';
 
-import webSocketClient from 'client/web_websocket_client';
-import {initializePlugins} from 'plugins';
-import Pluggable from 'plugins/pluggable';
-import A11yController from 'utils/a11y_controller';
-import {PageLoadContext} from 'utils/constants';
-import {EmojiIndicesByAlias} from 'utils/emoji';
-import {TEAM_NAME_PATH_PATTERN} from 'utils/path';
-import {getSiteURL} from 'utils/url';
-import * as UserAgent from 'utils/user_agent';
-import * as Utils from 'utils/utils';
-
 import type {ProductComponent, PluginComponent} from 'types/store/plugins';
 
 import LuxonController from './luxon_controller';
@@ -61,7 +60,7 @@ import RootRedirect from './root_redirect';
 
 import 'plugins/export.js';
 
-const AuthCallback = makeAsyncComponent('AccessProblem', lazy(() => import('components/casdoor/CasdoorAuth')));
+const AuthCallback = makeAsyncComponent('AccessProblem', React.lazy(() => import('components/casdoor/CasdoorAuth')));
 
 const LazyErrorPage = React.lazy(() => import('components/error_page'));
 const LazyLogin = React.lazy(() => import('components/login/login'));

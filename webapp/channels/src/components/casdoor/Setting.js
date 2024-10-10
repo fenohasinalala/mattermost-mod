@@ -49,5 +49,5 @@ export const logout = () => {
 };
 
 export const showMessage = (message) => {
-    alert(message);
+    //alert(message);
 };

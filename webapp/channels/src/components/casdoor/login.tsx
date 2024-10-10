@@ -8,6 +8,12 @@ import type {FormEvent} from 'react';
 import {useIntl} from 'react-intl';
 import {useSelector, useDispatch} from 'react-redux';
 import {Link, useLocation, useHistory, Route} from 'react-router-dom';
+import Constants from 'utils/constants';
+import DesktopApp from 'utils/desktop_api';
+import {t} from 'utils/i18n';
+import {showNotification} from 'utils/notifications';
+import {isDesktopApp} from 'utils/user_agent';
+import {setCSRFFromCookie} from 'utils/utils';
 
 import type {Team} from '@mattermost/types/teams';
 
@@ -53,13 +59,6 @@ import type {GlobalState} from 'types/store';
 import LoginMfa from './login_mfa';
 
 import './login.scss';
-
-import Constants from 'utils/constants';
-import DesktopApp from 'utils/desktop_api';
-import {t} from 'utils/i18n';
-import {showNotification} from 'utils/notifications';
-import {isDesktopApp} from 'utils/user_agent';
-import {setCSRFFromCookie} from 'utils/utils';
 
 const MOBILE_SCREEN_WIDTH = 1200;
 
