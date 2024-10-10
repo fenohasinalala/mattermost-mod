@@ -4,6 +4,9 @@
 package main
 
 import (
+	// Casdoor config init
+	"github.com/mattermost/mattermost/server/v8/cmd/mattermost/casdoor"
+
 	"os"
 
 	"github.com/mattermost/mattermost/server/v8/cmd/mattermost/commands"
